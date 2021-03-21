@@ -9,13 +9,18 @@ jobs:
   main:
     name: Build, Validate and Deploy
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        include:
+          - source: index.html
+          - source: gap-analysis
     steps:
       - uses: actions/checkout@v2
       - uses: w3c/spec-prod@source-destination
         with:
           TOOLCHAIN: respec
-          SOURCE: index.html
-          DESTINATION: index.html
+          SOURCE: ${{ matrix.source }}
+          DESTINATION: ${{ matrix.destination }}
           VALIDATE_MARKUP: true
           GH_PAGES_BRANCH: gh-pages-release
           W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
