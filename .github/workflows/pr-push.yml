@@ -1,4 +1,4 @@
-name: Build, Validate and Deploy
+name: CI
 on:
   pull_request: {}
   push:
