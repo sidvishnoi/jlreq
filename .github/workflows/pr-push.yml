@@ -16,7 +16,7 @@ jobs:
           - source: gap-analysis
     steps:
       - uses: actions/checkout@v2
-      - uses: w3c/spec-prod@source-destination
+      - uses: w3c/spec-prod@copy-assets
         with:
           TOOLCHAIN: respec
           SOURCE: ${{ matrix.source }}
